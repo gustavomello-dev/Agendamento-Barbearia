@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: barbearia-agendamento
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: barbearia-db
+          property: connectionString
+      # Secrets: preencha manualmente no painel do Render após o primeiro deploy
+      # (Dashboard → seu serviço → Environment)
+      - key: GOOGLE_CREDENTIALS_JSON
+        sync: false
+      - key: GOOGLE_CALENDAR_ID
+        sync: false
+
+databases:
+  - name: barbearia-db
+    plan: free
