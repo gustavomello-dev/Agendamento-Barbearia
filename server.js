@@ -29,7 +29,7 @@ sequelize
   .sync()
   .then(() => {
     console.log('✅ Banco de dados conectado e sincronizado.');
-    app.listen(PORT, () => {
+    app.listen(PORT, "0.0.0.0", () => {
       console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
     });
   })
